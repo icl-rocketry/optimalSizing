@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1566823703 "writeup.tex" "writeup.pdf" "writeup" 1566823704
+["pdflatex"] 1566824347 "writeup.tex" "writeup.pdf" "writeup" 1566824349
   "/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/tfm/jknappen/ec/tcrm0500.tfm" 1136768653 1536 b3387106d9afecbfe14bde2de6eadf47 ""
@@ -139,8 +139,8 @@
   "/usr/local/texlive/2015/texmf-var/web2c/pdftex/pdflatex.fmt" 1458314500 3849859 b7d97ce99562c827e189ae0dbfcdcb70 ""
   "/usr/local/texlive/2015/texmf.cnf" 1432479636 577 0d611272082f3cdb8e80e09a3c69cf07 ""
   "perf_req.eps" 1563570235 1220750 99207c8b369d955b7ccfd1b58fabfcfe ""
-  "sizing_result_Aug_26.eps" 1566822447 1801914 04c4c7c6387119bc4bcdae0c9ee94e6c ""
-  "writeup.aux" 1566823704 1111 79a0406434270df906b57c4ee13ace34 "pdflatex"
+  "sizing_result_Aug_26.eps" 1566824316 1782526 c37cbd374ff1202d1b92d8d73d8b678b ""
+  "writeup.aux" 1566824349 1111 79a0406434270df906b57c4ee13ace34 "pdflatex"
   "writeup.tex" 1566823698 16712 8d08354e25168aa7a4b93de440a2d2d0 ""
   (generated)
   "writeup.log"
