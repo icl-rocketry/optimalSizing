@@ -2,6 +2,8 @@ venv/
 
 *.pyc
 
-.idea/
+*.idea/*
 
 .idea
+
+*.ipynb_checkpoints/*
