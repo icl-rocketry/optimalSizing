@@ -1,6 +1,7 @@
 import gpkit
 from gpkit import Model, Variable
 from gpkit.constraints.tight import Tight
+from gpkit.constraints.loose import Loose
 from gpkit.constraints.bounded import Bounded
 from gpkit import ureg
 
@@ -50,11 +51,12 @@ class SimpleEngine(Model):
         l_ox = self.l_ox = Variable("L_{ox}", "m", "Length of ox tank")
         t_wall = self.t = Variable("t_{wall}", "mm", "Wall Thickness of ox tank")
         d = self.d = Variable("d_ox", 15, "cm", "Diameter of ox tank")
-        P_ox = self.P = Variable("Tank Pressure", 80, "bar", "Ox Tank pressure")
-        sigma_max = Variable("\sigma_{max}", 276, "MPa", "Max stress of tank")
+        P_ox = self.P = Variable("Tank P", 80, "bar", "Max Ox Tank pressure")
+        sigma_max = Variable("\sigma_{max}", 430, "MPa", "Max stress of tank, Al-7075-T6")
 
         # determine the wall thickness needed
-        constraints += [t_wall >= 5 * P_ox * d / (2 * sigma_max)]  # 10 is the safety factor
+        SF = Variable("SF", 5, "", "Wall thickness safety factor")
+        constraints += [t_wall >= SF * P_ox * d / (2 * sigma_max)]
 
         # determine volume required
         # R = Variable("R", 8.314, "J/mol/K", "Ideal gas constant")
@@ -74,34 +76,32 @@ class SimpleEngine(Model):
 
         m_grain_tank = Variable("m_{grain tank}", "kg", "Mass of grain tank")
 
-        rho_fuel = Variable("rho_{wax}", 1.2, "kg/m^3", "Density of fuel")
+        rho_fuel = Variable("rho_{wax}", 900, "kg/m^3", "Density of fuel")
 
         v_fuel = Variable("v_{fuel}", "cm^3", "Volume of fuel")
 
+        constraints += [Tight([v_fuel >= m_fuel/rho_fuel])]
+
         # estimate port such that the grain area is half the cross section area
-        A_grain = Variable("A_{grain}", "cm^2","cross section of where the grain is")
-        constraints += [A_grain <= 0.5*3.14*(d/2)**2]
+        A_grain = Variable("A_{grain}", "cm^2","cross section area of grain")
+        constraints += [Tight([A_grain <= 0.5*3.14*(d/2)**2])]
 
         #estimate length
         l_grain = Variable("L_{grain}", "m", "Length of the grain")
         constraints += [l_grain >= v_fuel/A_grain]
 
         # estimate mass, assuming the thickness is the same as the ox
-        constraints += [m_grain_tank >= rho_tank * (3.14 * d * l_grain * t_wall)]  # the 2 is for safety factor and endcaps
+        constraints += [Tight([m_grain_tank >= rho_tank * (3.14 * d * l_grain * t_wall)])]
 
-
-        # for now assume its the same as the ox tank
-        constraints += [m_grain_tank >= m_ox_tank]
-
-        m_valves = Variable("m_{valves}", 1, "kg", "Mass of valves and associated plumbing")
+        m_valves = Variable("m_{valves}", 1, "kg", "Mass of valves and plumbing")
 
         m_nozzle = Variable("m_{nozzle}", 1, "kg", "Mass of nozzle assembly")
 
-        constraints += [m_dry >= m_ox_tank + m_valves + m_grain_tank + m_nozzle]
+        constraints += [Tight([m_dry >= m_ox_tank + m_valves + m_grain_tank + m_nozzle])]
 
         # impose bounds
-        constraints += [l_ox >= 0.5 * ureg.m, l_ox <= 2 * ureg.m]
-        constraints += [t_wall >= 1 * ureg.mm, t_wall <= 20 * ureg.mm]
+        constraints += [Loose([l_ox >= 0.5 * ureg.m, l_ox <= 2 * ureg.m])]
+        constraints += [Loose([t_wall >= 1 * ureg.mm, t_wall <= 20 * ureg.mm])]
 
         return [components, constraints]
 

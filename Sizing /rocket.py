@@ -1,6 +1,7 @@
 import gpkit
 from gpkit import Model, Variable
 from gpkit.constraints.tight import Tight
+from gpkit.constraints.loose import Loose
 from gpkit.constraints.bounded import Bounded
 from gpkit import ureg
 
@@ -49,25 +50,33 @@ class Rocket(Model):
         # main_impulse = Variable("I_t", 20000, "N s", "Total impulse of main engine")
 
         # constraints += [engine.c * engine.m_prop >= main_impulse]
-
-        constraints += [engine.m_prop >= 0.17 * m]
+        pmf = self.pmf = Variable('PMF', 0.20, '', 'Propellant Mass Fraction required')
+        constraints += [engine.m_prop >= pmf * m]
 
         # launch rail requirements
 
         launch_accel = Variable("a_{launch}", "m/s^2", "Acceleration off launch rail")
-
-        constraints += [launch_accel <= (engine.F + boosters.F) / m]
-
         g = Variable("g", 9.81, "m/s^2", "Acceleration due to gravity")
-        TW = Variable("T/W", 10, "", "Launch Thrust to weight ratio")
-        constraints += [launch_accel >= TW * g]
+        min_a = Variable("min_a", "m/s^2", "minimum launch acceleration")
 
-        constraints += [0.5 * launch_accel * boosters.t_burn ** 2 >= 5 * ureg.m]
+        launch_rail_v = Variable("v_{launch}", 30, "m/s", "Velocity off launch rail")
+        launch_rail_l = Variable("L_{launch}", 5, "m", "Length of launch rail")
 
-        constraints += [boosters.m_prop >= 0.2 * ureg.kg]  # from estimate of propellant mass required
+        constraints += [min_a >= launch_rail_v**2/(2*launch_rail_l)]
+
+        constraints += [Tight([launch_accel <= (engine.F + boosters.F - m * g) / m])]
+
+        constraints += [Tight([launch_accel >= min_a])]
+
+        constraints += [0.5 * launch_accel * boosters.t_burn ** 2 >= launch_rail_l]
+
+        constraints += [Loose([boosters.m_prop >= 0.2 * ureg.kg])]  # from estimate of propellant mass required
         constraints += [
             boosters.m_prop * boosters.c >= boosters.F * boosters.t_burn]  # from estimate of propellant mass required
 
-        constraints += [m <= 100 * ureg.kg]
-        constraints += [m >= 10 * ureg.kg]
+        constraints += [Loose([m <= 100 * ureg.kg, m >= 10 * ureg.kg])]
+
+        TW_main = self.TW_main = Variable("TW_{main, min}", 2, "", "Main engine thrust to take off weight")
+        constraints += [Loose([engine.F >= TW_main * m * g])]
+
         return [components, constraints]
