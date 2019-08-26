@@ -1,4 +1,4 @@
-PWD /Users/Devansh/Documents/GitHub/optimalSizing/Sizing_2/writeup
+PWD /Users/Devansh/Documents/GitHub/optimalSizing/Sizing_FrozenAug26/writeup
 INPUT /usr/local/texlive/2015/texmf.cnf
 INPUT /usr/local/texlive/2015/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2015/texmf-var/web2c/pdftex/pdflatex.fmt
@@ -232,8 +232,6 @@ INPUT ./sizing_result_Aug_26.eps
 INPUT ./sizing_result_Aug_26-eps-converted-to.pdf
 INPUT ./sizing_result_Aug_26-eps-converted-to.pdf
 INPUT ./sizing_result_Aug_26.eps
-INPUT ./sizing_result_Aug_26-eps-converted-to.pdf
-INPUT ./sizing_result_Aug_26-eps-converted-to.pdf
 INPUT ./sizing_result_Aug_26-eps-converted-to.pdf
 INPUT ./sizing_result_Aug_26-eps-converted-to.pdf
 INPUT ./sizing_result_Aug_26-eps-converted-to.pdf

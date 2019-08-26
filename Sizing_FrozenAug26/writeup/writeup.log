@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.3.18)  26 AUG 2019 13:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.3.18)  26 AUG 2019 13:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -896,18 +896,12 @@ Package epstopdf Info: Source file: <sizing_result_Aug_26.eps>
 (epstopdf)                    size: 1801914 bytes
 (epstopdf)             Output file: <sizing_result_Aug_26-eps-converted-to.pdf>
 
-(epstopdf)                    date: 2019-08-26 13:04:01
-(epstopdf)                    size: 31290 bytes
+(epstopdf)                    date: 2019-08-26 13:27:33
+(epstopdf)                    size: 31713 bytes
 (epstopdf)             Command: <repstopdf --outfile=sizing_result_Aug_26-eps-c
 onverted-to.pdf sizing_result_Aug_26.eps>
 (epstopdf)             \includegraphics on input line 302.
-runsystem(repstopdf --outfile=sizing_result_Aug_26-eps-converted-to.pdf sizing_
-result_Aug_26.eps)...executed safely (allowed).
-
-Package epstopdf Info: Result file: <sizing_result_Aug_26-eps-converted-to.pdf>
-
-(epstopdf)                    date: 2019-08-26 13:27:33
-(epstopdf)                    size: 31713 bytes.
+Package epstopdf Info: Output file is already uptodate.
 
 <sizing_result_Aug_26-eps-converted-to.pdf, id=50, 579.16376pt x 821.0675pt>
 File: sizing_result_Aug_26-eps-converted-to.pdf Graphic file (type pdf)
@@ -942,7 +936,7 @@ xmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2015/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2015/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2015/texmf
 -dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on writeup.pdf (9 pages, 251971 bytes).
+Output written on writeup.pdf (9 pages, 251965 bytes).
 PDF statistics:
  116 PDF objects out of 1000 (max. 8388607)
  81 compressed objects within 1 object stream
