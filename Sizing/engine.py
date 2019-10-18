@@ -28,7 +28,7 @@ class SimpleEngine(Model):
 
         c = self.c = Variable("c", 2100, "m/s", "effective exhaust speed of engine")
 
-        F = self.F = Variable("F", 750, "N", "Engine thrust")
+        F = self.F = Variable("F", 1000, "N", "Engine thrust")
 
         OF = self.OF = Variable("OF", 6, "", "Ox to fuel ratio")
 
@@ -50,7 +50,7 @@ class SimpleEngine(Model):
         v_ox = self.v_ox = Variable("V_{ox}", "cm^3", "Volume of ox tank")
         l_ox = self.l_ox = Variable("L_{ox}", "m", "Length of ox tank")
         t_wall = self.t = Variable("t_{wall}", "mm", "Wall Thickness of ox tank")
-        d = self.d = Variable("d_ox", 15, "cm", "Diameter of ox tank")
+        d = self.d = Variable("d_ox", 18, "cm", "Diameter of ox tank")
         P_ox = self.P = Variable("Tank P", 80, "bar", "Max Ox Tank pressure")
         sigma_max = Variable("\sigma_{max}", 430, "MPa", "Max stress of tank, Al-7075-T6")
 
@@ -74,7 +74,7 @@ class SimpleEngine(Model):
 
         # grain tank sizing
 
-        m_grain_tank = Variable("m_{grain tank}", "kg", "Mass of grain tank")
+        m_grain_tank = Variable("m_{grain tank}", "kg", "Mass of combustion chamber")
 
         rho_fuel = Variable("rho_{wax}", 900, "kg/m^3", "Density of fuel")
 

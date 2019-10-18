@@ -76,7 +76,7 @@ class Rocket(Model):
 
         constraints += [Loose([m <= 100 * ureg.kg, m >= 10 * ureg.kg])]
 
-        TW_main = self.TW_main = Variable("TW_{main, min}", 2, "", "Main engine thrust to take off weight")
+        TW_main = self.TW_main = Variable("TW_{main, min}", 2.5, "", "Main engine thrust to take off weight")
         constraints += [Loose([engine.F >= TW_main * m * g])]
 
         return [components, constraints]

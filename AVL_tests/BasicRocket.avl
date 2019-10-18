@@ -1,0 +1,90 @@
+BasicRocket
+0.5                      Mach
+0      0      0.0        iYsym  iZsym  Zsym
+0.25   5.0    5.0        Sref   Cref   Bref
+0.0    0.0    0.0        Xref   Yref   Zref
+0.15                     CDo (maybe CDp according to docs?)
+#
+#=============================================
+BODY
+Hull
+24  1.0
+#
+TRANSLATE
+0. 0. 0.
+SCALE
+2.0  2.0  2.0
+#
+BFIL
+fuseData.dat
+
+#=============================================
+SURFACE
+Horizontal tail
+5   1.0    5  -2.0
+YDUPLICATE
+     0.0
+ANGLE
+    0.0
+SCALE
+ 1.0  1.0  1.0
+TRANSLATE
+ 1.8  0.0  0.0
+#---------------------------
+SECTION
+#   Xle   Yle   Zle    Chord      Angle   Nspan
+     0.0   0.075   0.0    0.2         0.000   7  -1.5
+NACA
+    0012
+#---------------------------
+SECTION
+     0.05  0.3   0.0    0.15        0.000   1   0
+NACA
+    0012
+#=============================================
+SURFACE
+Vertical tail (Top)
+5   1.0   10   1.0
+
+ANGLE
+    0.0
+SCALE
+ 1.0  1.0  1.0
+TRANSLATE
+ 1.8  0.0  0.0
+#---------------------------
+SECTION
+#   Xle   Yle   Zle    Chord      Angle   Nspan
+     0  0.0  0.075    0.2        0.000   7   -1.5
+NACA
+    0012
+
+#---------------------------
+SECTION
+     0.05   0.0   0.3    0.15         0.000   1 0
+NACA
+     0012
+
+
+#=============================================
+SURFACE
+Vertical tail (Bottom)
+5   1.0   10   1.0
+
+ANGLE
+   0.0
+SCALE
+1.0  1.0  1.0
+TRANSLATE
+1.8  0.0  0.0
+#---------------------------
+SECTION
+#   Xle   Yle   Zle    Chord      Angle   Nspan
+    0  0.0  -0.075    0.2        0.000   7   -1.5
+NACA
+    0012
+#---------------------------
+SECTION
+    0.05   0.0   -0.3    0.15         0.000   1 0
+NACA
+    0012
